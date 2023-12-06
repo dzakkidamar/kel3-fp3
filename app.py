@@ -33,7 +33,7 @@ if page == "View Data":
     data = conn.query('SELECT * FROM mbdf3 ORDER By id;', ttl="0").set_index('id')
     st.dataframe(data)
 #
-if page == "View Data":
+if page == "Search Data":
     # Add search criteria
     search_criteria = st.sidebar.selectbox("Search by", ["-- Select Search Criteria --", "Dosen Wali", "Nama Mahasiswa", "Jenis Kelamin", "Jam Tidur"])
 
