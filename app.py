@@ -70,7 +70,7 @@ if page == "Edit Data (password is required)":
         password_correct = True
     
         if password_correct:
-        sign_in_button = st.sidebar.button("Sign In")
+            sign_in_button = st.sidebar.button("Sign In")
         if sign_in_button:
             signed_in = True
 
