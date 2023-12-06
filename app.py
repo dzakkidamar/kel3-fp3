@@ -61,17 +61,6 @@ if page == "Search Data":
         st.dataframe(search_results)
 
 ####
-if page == "Edit Data":
-# Password protection for Edit Data
-password = st.sidebar.text_input("Enter Password:", type="password")
-password_correct = False  # Flag to track password correctness
-
-if password == "your_secret_password":  # Set your secret password here
-    password_correct = True
-
-if not password_correct:
-    st.sidebar.warning("Incorrect password. Please enter the correct password to access Edit Data.")
-    st.stop()
     
 if page == "Edit Data":
     if st.button('Tambah Data'):
@@ -122,3 +111,15 @@ if page == "Edit Data":
                         session.execute(query, {'1':id})
                         session.commit()
                         st.experimental_rerun()
+
+
+# Password protection for Edit Data
+password = st.sidebar.text_input("Enter Password:", type="password")
+password_correct = False  # Flag to track password correctness
+
+if password == "your_secret_password":  # Set your secret password here
+    password_correct = True
+
+if not password_correct:
+    st.sidebar.warning("Incorrect password. Please enter the correct password to access Edit Data.")
+    st.stop()
