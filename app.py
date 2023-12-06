@@ -13,7 +13,7 @@ with conn.session as session:
     session.execute(query)
 
 st.header('Data Base Mahasiswa Kelas 3B Statistika Bisnis ITS Angkatan 2022')
-page = st.sidebar.selectbox("Pilih Menu", ["View Data", "Edit Data", "Visualisasi Jenis Kelamin", "Visualisasi Mata Kuliah Favorit"])
+page = st.sidebar.selectbox("Pilih Menu", ["View Data", "Edit Data"])
 
 if page == "View Data":
     data = conn.query('SELECT * FROM mbdf3 ORDER By id;', ttl="0").set_index('id')
@@ -68,35 +68,3 @@ if page == "Edit Data":
                         session.execute(query, {'1':id})
                         session.commit()
                         st.experimental_rerun()
-
-if page == "Visualisasi Jenis Kelamin":
-    st.subheader("Visualisasi Jenis Kelamin Mahasiswa")
-    data1 = conn.query('SELECT jenis_kelamin, COUNT(*) as count FROM mbdf3 GROUP BY jenis_kelamin;')
-    st.bar_chart(data1.set_index('jenis_kelamin'))
-
-if page == "Visualisasi Mata Kuliah Favorit":
-    st.subheader("Visualisasi Mata Kuliah Favorit Mahasiswa")
-    data = conn.query('SELECT (mata_kuliah_favorit) , COUNT(*) as count FROM mbdf3 GROUP BY mata_kuliah_favorit;')
-    st.bar_chart(data.set_index('mata_kuliah_favorit'))
-
-if page == "Visualisasi Jam Tidur":
-    st.subheader("Visualisasi Jam Tidur Mahasiswa")
-    data = conn.query('SELECT (jam_tidur) , COUNT(*) as count FROM mbdf3 GROUP BY jam_tidur;')
-    st.bar_chart(data.set_index('jam_tidur'))
-
-search_query = st.sidebar.text_input("Search by nama_mahasiswa", "")
-filtered_data = None
-
-if search_query:
-    filtered_data = conn.query(
-        f"SELECT * FROM mbdf3 WHERE LOWER(nama_mahasiswa) LIKE LOWER('%{search_query}%') ORDER BY id;", ttl="0"
-    ).set_index("id")
-
-# ... (rest of your code)
-
-if page == "View Data":
-    if filtered_data is not None:
-        st.dataframe(filtered_data)
-    else:
-        data = conn.query("SELECT * FROM mbdf3 ORDER BY id;", ttl="0").set_index("id")
-        st.dataframe(data)
