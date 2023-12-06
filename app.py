@@ -123,17 +123,17 @@ if page == "Edit Data (password is required)":
 
                         col1, col2 = st.columns([1, 6])
 
-                        with col1:
-                            if st.form_submit_button('UPDATE'):
-                                with conn.session as session:
-                                    query = text('UPDATE mbdf3 \
-                                                  SET dosen_wali=:1, nama_mahasiswa=:2, jenis_kelamin=:3, mata_kuliah_favorit=:4, \
-                                                  no_whatsapp=:5, alamat_domisili=:6, jam_tidur=:7 \
-                                                  WHERE id=:8;')
-                                    session.execute(query, {'1':dosen_wali_baru, '2':nama_mahasiswa_baru, '3':jenis_kelamin_baru, '4':str(mata_kuliah_favorit_baru), 
-                                                            '5':no_whatsapp_baru, '6':alamat_domisili_baru, '7':jam_tidur_baru, '8':id})
-                                    session.commit()
-                                    st.experimental_rerun()
+with col1:
+    if st.form_submit_button('UPDATE'):
+        with conn.session as session:
+            query = text('UPDATE mbdf3 \
+                          SET dosen_wali=:1, nama_mahasiswa=:2, jenis_kelamin=:3, mata_kuliah_favorit=:4, \
+                          no_whatsapp=:5, alamat_domisili=:6, jam_tidur=:7 \
+                          WHERE id=:8;')
+            session.execute(query, {'1':dosen_wali_baru, '2':nama_mahasiswa_baru, '3':jenis_kelamin_baru, '4':str(mata_kuliah_favorit_baru), 
+                                    '5':no_whatsapp_baru, '6':alamat_domisili_baru, '7':jam_tidur_baru, '8':id})
+            session.commit()
+            st.experimental_rerun()
 
                         with col2:
                             if st.form_submit_button('DELETE'):
