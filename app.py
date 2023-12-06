@@ -63,7 +63,16 @@ if page == "Search Data":
 ####
     
 if page == "Edit Data":
-    if st.button('Tambah Data'):
+    password = st.sidebar.text_input("Enter Password:", type="password")
+    password_correct = False  # Flag to track password correctness
+
+    if password == "your_secret_password":  # Set your secret password here
+        password_correct = True
+
+    if not password_correct:
+        st.sidebar.warning("Incorrect password. Please enter the correct password to access Edit Data.")
+        st.stop()
+    if st.button('Tambah Data') and password_correct:
         with conn.session as session:
             query = text('INSERT INTO mbdf3 (dosen_wali, nama_mahasiswa, jenis_kelamin, mata_kuliah_favorit, no_whatsapp, alamat_domisili, jam_tidur) \
                           VALUES (:1, :2, :3, :4, :5, :6, :7);')
@@ -90,7 +99,8 @@ if page == "Edit Data":
                 no_whatsapp_baru = st.text_input("no_whatsapp", no_whatsapp_lama)
                 alamat_domisili_baru = st.text_input("alamat_domisili", alamat_domisili_lama)
                 jam_tidur_baru = st.time_input("jam_tidur", jam_tidur_lama)
-                
+
+else:   
                 col1, col2 = st.columns([1, 6])
 
                 with col1:
@@ -111,3 +121,4 @@ if page == "Edit Data":
                         session.execute(query, {'1':id})
                         session.commit()
                         st.experimental_rerun()
+    pass
