@@ -61,8 +61,6 @@ if page == "Search Data":
         st.dataframe(search_results)
 
 ####
-
-
 if page == "Edit Data":
 # Password protection for Edit Data
 password = st.sidebar.text_input("Enter Password:", type="password")
@@ -75,6 +73,7 @@ if not password_correct:
     st.sidebar.warning("Incorrect password. Please enter the correct password to access Edit Data.")
     st.stop()
     
+if page == "Edit Data":
     if st.button('Tambah Data'):
         with conn.session as session:
             query = text('INSERT INTO mbdf3 (dosen_wali, nama_mahasiswa, jenis_kelamin, mata_kuliah_favorit, no_whatsapp, alamat_domisili, jam_tidur) \
