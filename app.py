@@ -76,30 +76,6 @@ if page == "Search Data":
     # Display the result
     st.dataframe(data)
 
-# untuk memberikan fitur password #
-
-# ...
-
-if page == "Edit Data (password is required)":
-
-    # Password input for authentication
-    password = st.text_input("Enter password {'pass: datamilikkelas3b_dsbfvokasiits'}", "", type="password")
-
-    # Check if the password is correct
-    correct_password = "datamilikkelas3b_dsbfvokasiits"  # Replace with your actual password
-
-    # Flag to track if the user has successfully signed in
-    signed_in = False
-
-    # Flag to track if the password check failed
-    incorrect_password = False
-
-    # Button to trigger password check
-    if st.button("Sign in"):
-        if password == correct_password:
-            signed_in = True  # Set the flag to True after successful login
-            incorrect_password = False  # Reset the incorrect_password flag
-
             data = conn.query('SELECT * FROM mbdf3 ORDER By id;', ttl="0")
             for _, result in data.iterrows():        
                 id = result['id']
