@@ -63,7 +63,7 @@ if page == "Search Data":
 ####
     
 if page == "Edit Data (password is required)":
-    password = st.sidebar.text_input("Enter Password {'pass: dsbfvokasiits}'", type="password")
+    password = st.sidebar.text_input("Enter Password {'pass: dsbfvokasiits}", type="password")
     password_correct = False  # Flag to track password correctness
 
     if password == "dsbfvokasiits":  # Set your secret password here
