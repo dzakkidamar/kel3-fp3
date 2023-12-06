@@ -112,11 +112,9 @@ if page == "Edit Data":
                                                     '5':no_whatsapp_baru, '6':alamat_domisili_baru, '7':jam_tidur_baru, '8':id})
                             session.commit()
                             st.experimental_rerun()
-else:   
                 with col2:
                     if st.form_submit_button('DELETE'):
                         query = text(f'DELETE FROM mbdf3 WHERE id=:1;')
                         session.execute(query, {'1':id})
                         session.commit()
                         st.experimental_rerun()
-    pass
