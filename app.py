@@ -18,7 +18,7 @@ list_doctor = ['', 'Dra. Lucia Aridinanti, M.Si.', 'Ir. Sri Pingit Wulandari, M.
 list_jenis_kelamin = ['', 'Laki-laki', 'Perempuan']
 
 conn = st.connection("postgresql", type="sql", 
-                     url="postgresql://dzakkirabbani99:EFm9ODoGAx2w@ep-floral-pine-60585995.us-east-2.aws.neon.tech/web")
+                     url="postgresql://dzakkirabbani99:ledw08gzCjma@ep-jolly-rice-21648614.us-east-2.aws.neon.tech/web")
 with conn.session as session:
     query = text('CREATE TABLE IF NOT EXISTS mbdf3 (id serial, dosen_wali varchar, nama_mahasiswa varchar, jenis_kelamin char(25), \
                                                        mata_kuliah_favorit text, no_whatsapp varchar, alamat_domisili text);')
