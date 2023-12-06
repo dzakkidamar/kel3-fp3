@@ -134,6 +134,10 @@ if page == "Edit Data (password is required)":
                                                             '5':no_whatsapp_baru, '6':alamat_domisili_baru, '7':jam_tidur_baru, '8':id})
                                     session.commit()
                                     st.experimental_singleton("update_trigger", True)
+                        # Check if the update_trigger parameter has changed and rerun the app
+update_trigger = st.experimental_get_query_params().get("update_trigger", [False])[0]
+if update_trigger:
+    st.experimental_rerun()
 
 
                         with col2:
