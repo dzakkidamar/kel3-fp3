@@ -24,7 +24,7 @@ with conn.session as session:
                                                        mata_kuliah_favorit text, no_whatsapp varchar, alamat_domisili text);')
     session.execute(query)
 
-st.header('Data Base Mahasiswa Kelas 3B Statistika Bisnis ITS Angkatan 2022')
+st.header('📊 Data Base Mahasiswa Kelas 3B Statistika Bisnis ITS Angkatan 2022')
 
 st.sidebar.header("Select Menu")
 page = st.sidebar.selectbox("Select by", ["View Data", "Search Data", "Edit Data (password is required)"])
