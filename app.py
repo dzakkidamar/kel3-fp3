@@ -9,7 +9,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.markdown('aKelompok 3_FP3 - Aplikasi Manajemen Data v1.0.0')
+st.markdown('Kelompok 3_FP3 - Aplikasi Manajemen Data v1.0.0')
 
 image_url = "https://www.its.ac.id/wp-content/uploads/2020/07/Logo-ITS-1-300x185.png"
 st.sidebar.image(image_url, caption='Kelompok 3', width=100)
