@@ -46,6 +46,7 @@ if page == "Search Data":
             selected_dosen_wali = st.sidebar.selectbox("Select Dosen Wali", list_doctor[1:])
             search_results = conn.query(f"SELECT * FROM mbdf3 WHERE dosen_wali = '{selected_dosen_wali}' ORDER BY id;", ttl="0").set_index('id')
         elif search_criteria == "Nama Mahasiswa":
+            selected_nama_mahasiswa = st.sidebar.selectbox("Select Nama Mahasiswa")
             search_query = st.sidebar.text_input("Enter Nama Mahasiswa")
             if search_query:
                 search_results = conn.query(f"SELECT * FROM mbdf3 WHERE LOWER(nama_mahasiswa) LIKE LOWER('%{search_query}%') ORDER BY id;", ttl="0").set_index('id')
