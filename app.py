@@ -27,7 +27,7 @@ with conn.session as session:
 st.header('Data Base Mahasiswa Kelas 3B Statistika Bisnis ITS Angkatan 2022')
 
 st.sidebar.header("Select Menu")
-page = st.sidebar.selectbox("Select by", ["View Data", "Search Data", "Edit Data"])
+page = st.sidebar.selectbox("Select by", ["View Data", "Search Data", "Edit Data (password is required)"])
 
 if page == "View Data":
     data = conn.query('SELECT * FROM mbdf3 ORDER By id;', ttl="0").set_index('id')
@@ -62,11 +62,11 @@ if page == "Search Data":
 
 ####
     
-if page == "Edit Data":
-    password = st.sidebar.text_input("Enter Password:", type="password")
+if page == "Edit Data (password is required)":
+    password = st.sidebar.text_input("pass: dsbfvokasiits", type="password")
     password_correct = False  # Flag to track password correctness
 
-    if password == "your_secret_password":  # Set your secret password here
+    if password == "dsbfvokasiits":  # Set your secret password here
         password_correct = True
 
     if not password_correct:
