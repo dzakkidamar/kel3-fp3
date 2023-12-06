@@ -2,6 +2,18 @@ import streamlit as st
 import pandas as pd
 from sqlalchemy import text
 
+# Set page configuration
+st.set_page_config(
+    page_title="Kel.3 FP3 Manajemen Data v1.0.0",
+    page_icon="📊",
+    layout="wide"
+)
+
+st.markdown('Kelompok 3_FP3 - Aplikasi Manajemen Data v1.0.0')
+
+image_url = "https://www.its.ac.id/wp-content/uploads/2020/07/Logo-ITS-1-300x185.png"
+st.sidebar.image(image_url, caption='Kelompok 3', width=100)
+
 list_doctor = ['', 'Dra. Lucia Aridinanti, M.Si.', 'Ir. Sri Pingit Wulandari, M.Si.', 'Prof. Dr. Wahyu Wibowo, S.Si, M.Si.', 'Dra. Sri Mumpuni Retnaningsih, M.T.', 'Iis Dewi Ratih, S.Si, M.Si.', 'Zakiatul Wildani, S.Si, M.Sc.', 'Mike Prastuti, S.Si, M.Si.', 'Muhammad Alifian Nuriman, S.Stat, M.Stat.', 'Dra. Destri Susilaningrum, M.Si.', 'Dr. Brodjol Sutijo Suprih Ulama, M.Si.', 'Dwi Endah Kusrini, S.Si, M.Si.', 'Mukti Ratna Dewi, S.Si, M.Sc.', 'Muhammad Reza Habibi, S.Si, M.Si.', 'Fausania Hibatullah, S.Stat, M.Stat.']
 list_jenis_kelamin = ['', 'Laki-laki', 'Perempuan']
 
