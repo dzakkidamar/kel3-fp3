@@ -27,12 +27,40 @@ with conn.session as session:
 st.header('Data Base Mahasiswa Kelas 3B Statistika Bisnis ITS Angkatan 2022')
 
 st.sidebar.header("Select Menu")
-page = st.sidebar.selectbox("Select by", ["View Data", "Edit Data"])
+page = st.sidebar.selectbox("Select by", ["View Data", "Search Data", "Edit Data"])
 
 if page == "View Data":
     data = conn.query('SELECT * FROM mbdf3 ORDER By id;', ttl="0").set_index('id')
     st.dataframe(data)
+#
+if page == "View Data":
+    # Add search criteria
+    search_criteria = st.sidebar.selectbox("Search by", ["-- Select Search Criteria --", "Dosen Wali", "Nama Mahasiswa", "Jenis Kelamin", "Jam Tidur"])
 
+    # Define an empty DataFrame for the search results
+    search_results = pd.DataFrame()
+
+    if search_criteria != "-- Select Search Criteria --":
+        # Based on the selected criteria, get the search query from the user
+        if search_criteria == "Dosen Wali":
+            selected_dosen_wali = st.sidebar.selectbox("Select Dosen Wali", list_doctor[1:])
+            search_results = conn.query(f"SELECT * FROM mbdf3 WHERE dosen_wali = '{selected_dosen_wali}' ORDER BY id;", ttl="0").set_index('id')
+        elif search_criteria == "Nama Mahasiswa":
+            search_query = st.sidebar.text_input("Enter Nama Mahasiswa")
+            if search_query:
+                search_results = conn.query(f"SELECT * FROM mbdf3 WHERE LOWER(nama_mahasiswa) LIKE LOWER('%{search_query}%') ORDER BY id;", ttl="0").set_index('id')
+        elif search_criteria == "Jenis Kelamin":
+            selected_jenis_kelamin = st.sidebar.selectbox("Select Jenis Kelamin", list_jenis_kelamin[1:])
+            search_results = conn.query(f"SELECT * FROM mbdf3 WHERE jenis_kelamin = '{selected_jenis_kelamin}' ORDER BY id;", ttl="0").set_index('id')
+        elif search_criteria == "Jam Tidur":
+            search_query = st.sidebar.time_input("Enter Jam Tidur")
+            if search_query:
+                search_results = conn.query(f"SELECT * FROM mbdf3 WHERE jam_tidur = '{search_query}' ORDER BY id;", ttl="0").set_index('id')
+
+        # Display search results
+        st.dataframe(search_results)
+
+#
 if page == "Edit Data":
     if st.button('Tambah Data'):
         with conn.session as session:
