@@ -68,6 +68,15 @@ if page == "Edit Data (password is required)":
 
     if password == "dsbfvokasiits":  # Set your secret password here
         password_correct = True
+    
+        if password_correct:
+        sign_in_button = st.sidebar.button("Sign In")
+        if sign_in_button:
+            signed_in = True
+
+    if not password_correct or not signed_in:
+        st.sidebar.warning("Incorrect password or not signed in. Please enter the correct password and click 'Sign In' to access Edit Data.")
+        st.stop()
 
     if not password_correct:
         st.sidebar.warning("Incorrect password. Please enter the correct password to access Edit Data.")
