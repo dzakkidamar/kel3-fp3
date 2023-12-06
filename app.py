@@ -25,7 +25,9 @@ with conn.session as session:
     session.execute(query)
 
 st.header('Data Base Mahasiswa Kelas 3B Statistika Bisnis ITS Angkatan 2022')
-page = st.sidebar.selectbox("Pilih Menu", ["View Data", "Edit Data"])
+
+st.sidebar.header("Select Menu")
+page = st.sidebar.selectbox("Select by", ["View Data", "Edit Data"])
 
 if page == "View Data":
     data = conn.query('SELECT * FROM mbdf3 ORDER By id;', ttl="0").set_index('id')
