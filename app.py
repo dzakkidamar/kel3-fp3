@@ -102,7 +102,7 @@ if page == "Edit Data":
 
 else:   
                 col1, col2 = st.columns([1, 6])
-
+    pass
                 with col1:
                     if st.form_submit_button('UPDATE'):
                         with conn.session as session:
@@ -121,4 +121,3 @@ else:
                         session.execute(query, {'1':id})
                         session.commit()
                         st.experimental_rerun()
-    pass
